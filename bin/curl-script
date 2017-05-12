@@ -1,0 +1,13 @@
+curl -v \
+	-H "Accept: application/json" \
+	-H "Content-type: application/json" \
+	-X POST \
+	-d "{\"number\":\"2\", \"seats\":\"4\"}" \
+	 http://localhost:3000/tables
+
+curl -v -X POST \
+	-H "Content-Type: application/json" \
+	-d bin/table.json \
+	http://localhost:3000/tables
+
+curl -v -H "Accept: application/json" -H "Content-type: application/json" -X POST -d bin/table.json http://localhost:3000/tables	

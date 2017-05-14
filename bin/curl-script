@@ -1,3 +1,8 @@
+---------------------------------------------------------------------------------------------------------------
+==============Table=====================================================================================
+
+#create
+
 curl -v \
 	-H "Accept: application/json" \
 	-H "Content-type: application/json" \
@@ -5,9 +10,55 @@ curl -v \
 	-d "{\"number\":\"2\", \"seats\":\"4\"}" \
 	 http://localhost:3000/tables
 
-curl -v -X POST \
-	-H "Content-Type: application/json" \
-	-d bin/table.json \
-	http://localhost:3000/tables
+#update
 
-curl -v -H "Accept: application/json" -H "Content-type: application/json" -X POST -d bin/table.json http://localhost:3000/tables	
+curl -v \
+	-H "Accept: application/json" \
+	-H "Content-type: application/json" \
+	-X PUT \
+	-d "{\"number\":\"10\", \"seats\":\"6\"}" \
+	 http://localhost:3000/tables/9
+
+#DELETE
+
+curl -v \
+	-H "Accept: application/json" \
+	-H "Content-type: application/json" \
+	-X DELETE \
+	 http://localhost:3000/tables/9
+
+
+==============Order======================================================================================
+
+#create
+
+curl -v \
+	-H "Accept: application/json" \
+	-H "Content-type: application/json" \
+	-X POST \
+	-d "{\"name\":\"Robi\", \"email\":\"robi@yahoo.com\"}" \
+	 http://localhost:3000/tables/10/orders.json
+
+
+==============Item======================================================================================
+
+#add
+
+curl -v \
+	-H "Accept: application/json" \
+	-H "Content-type: application/json" \
+	-X POST \
+	-d "{\"item_id\":\"1\"}" \
+	 http://localhost:3000/tables/10/orders/2/add
+
+
+#pay
+
+curl -v \
+	-H "Accept: application/json" \
+	-H "Content-type: application/json" \
+	-X POST \
+	-d "{\"amount\": 2, \"payment_method\":\"cash\"}" \
+	 http://localhost:3000/tables/10/orders/2/pay
+
+---------------------------------------------------------------------------------------------------------------

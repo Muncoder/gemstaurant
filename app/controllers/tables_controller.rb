@@ -3,11 +3,14 @@ class TablesController < ApplicationController
 
   # GET /tables
   def index
-    @tables = Table.all
+    page = params[:page] || 1
+    per_page = 5
+
+    @tables = Table.page(page).per(per_page).all
 
     render json: @tables
   end
-
+ 
   # GET /tables/1
   def show
     render json: @table

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'stats' => "stats#index"
+
   resources :orders, only: [:index]
 
   resources :tables do
